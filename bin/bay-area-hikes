@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/bay_area_hikes'
+
+BayAreaHikes::CLI.new.call

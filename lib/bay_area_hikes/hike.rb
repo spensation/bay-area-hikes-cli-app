@@ -1,0 +1,2 @@
+class BayAreaHikes::Hike 
+end

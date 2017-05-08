@@ -1,0 +1,2 @@
+class BayAreaHikes::Scraper
+end

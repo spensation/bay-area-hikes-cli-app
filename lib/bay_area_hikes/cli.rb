@@ -7,9 +7,12 @@ class BayAreaHikes::CLI
   end
 
   def list_hikes
-    puts 'Great ideas for a hike in the Bay:'
+    puts 'Great ideas for a hike in the Bay Area:'
 
     @hikes = BayAreaHikes::Hike.ideas
+    @hikes.each.with_index(1) do |hike, i|
+      puts "#{i}. #{hike.name} - #{hike.county} - #{hike.duration}"
+    end
   end
 
   def menu

@@ -14,15 +14,17 @@ class BayAreaHikes::CLI
   end
 
   def menu
+    puts 'Please enter the number of the hike you would like to know more about or exit to exit:'
     input = nil
     details = BayAreaHikes::Details.details
     while input != 'exit'
-      puts 'Please enter the number of the hike you would like to know more about or exit to exit:'
+
       input = gets.strip.downcase
       detail = details[input.to_i - 1]
 
       if input.to_i > 0
         puts "#{detail.description}"
+        call
       elsif input == 'list'
         list_hikes
       elsif input == 'exit'

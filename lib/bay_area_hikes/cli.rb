@@ -20,9 +20,7 @@ class BayAreaHikes::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        @hikes.each.with_index(1) do |hike, i|
-          puts "#{hike.description}"
-        end
+        list_details
       elsif input == 'list'
         list_hikes
       elsif input == 'exit'
@@ -33,7 +31,15 @@ class BayAreaHikes::CLI
     end
   end
 
+  def list_details
+    @details = BayAreaHikes::Details.details
+    @details.each.with_index(1) do |detail, i|
+      puts "#{detail.description}"
+    end
+  end
+
   def goodbye
     puts 'Thanks for visiting.  Have a great day out there!'
   end
+
 end

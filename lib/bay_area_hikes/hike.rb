@@ -1,6 +1,6 @@
 class BayAreaHikes::Hike
 
-attr_accessor :name, :city, :description
+attr_accessor :name, :city
 
   def self.ideas
     self.scrape_hikes
@@ -19,7 +19,7 @@ attr_accessor :name, :city, :description
     hike = self.new
     hike.name = doc.search('.entry-content h3').children[0].text.strip
     hike.city = doc.search('.entry-content h3').first.children.text[16..-1]
-    hike.description = doc.search('.entry-content p span').children[3].text[0..359]
+    #hike.description = doc.search('.entry-content p span').children[3].text[0..359]
     hike
 
   end
@@ -30,7 +30,9 @@ attr_accessor :name, :city, :description
     hike = self.new
     hike.name = doc.search('.entry-content h3').children[2].text.strip
     hike.city = doc.search('.entry-content h3').children[3].text[3..-1]
-    hike.description = doc.search('.entry-content p span').children[7..10].text.strip
+    #hike.description = doc.search('.entry-content p span').children[7..10].text.strip
     hike
   end
+
+
 end

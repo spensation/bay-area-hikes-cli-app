@@ -9,7 +9,7 @@ class BayAreaHikes::CLI
   def list_hikes
     @hikes = BayAreaHikes::Hike.ideas
     @hikes.each.with_index(1) do |hike, i|
-      puts "#{i}. #{hike.name} - #{hike.county} - #{hike.duration}"
+      puts "#{i}. #{hike.name} - #{hike.city}"
     end
   end
 
@@ -20,7 +20,9 @@ class BayAreaHikes::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @hikes[input.to_i - 1]
+        @hikes.each.with_index(1) do |hike, i|
+          puts "#{hike.description}"
+        end
       elsif input == 'list'
         list_hikes
       elsif input == 'exit'

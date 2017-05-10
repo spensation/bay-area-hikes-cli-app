@@ -1,6 +1,6 @@
 class BayAreaHikes::Hike
 
-attr_accessor :name, :county, :duration, :difficulty_level
+attr_accessor :name, :city, :description
 
   def self.ideas
     self.scrape_hikes
@@ -14,8 +14,12 @@ attr_accessor :name, :county, :duration, :difficulty_level
 
   def self.scrape_bayarea
     doc = Nokogiri::HTML(open('https://www.bayarea.com/play/the-best-bay-area-wildflower-hikes/'))
-    doc.css('.entry-content').each do |entry|
-binding.pry
-    end
+#binding.pry
+    hike = self.new
+    hike.name = doc.search('.entry-content h3').children[0].text.strip
+    hike.city = doc.search('.entry-content h3').first.children.text[16..-1]
+    hike.description = doc.search('.entry-content p span').children[3].text[0..359]
+    hike
+
   end
 end

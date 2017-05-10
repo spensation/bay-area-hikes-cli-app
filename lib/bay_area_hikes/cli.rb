@@ -32,10 +32,7 @@ class BayAreaHikes::CLI
   end
 
   def list_details
-    @details = BayAreaHikes::Details.details
-    @details.each.with_index(1) do |detail, i|
-      puts "#{detail.description}"
-    end
+    puts "more details"
   end
 
   def goodbye

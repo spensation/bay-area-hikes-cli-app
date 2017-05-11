@@ -1,29 +1,27 @@
 class BayAreaHikes::CLI
 
   def call
+    puts "Welcome to Bay Area Hikes"
+    BayAreaHikes::Scraper.new.scrape_hikes
     list_hikes
     menu
     goodbye
   end
 
   def list_hikes
-    @hikes = BayAreaHikes::Hike.ideas
-    @hikes.each.with_index(1) do |hike, i|
-      puts "#{i}. #{hike.name} - #{hike.city}"
+    BayAreaHikes::Hike.all.each.with_index(1) do |hike, i|
+      puts "#{i}. #{hike.area} - #{hike.name}"
     end
   end
 
   def menu
     puts 'Please enter the number of the hike you would like to know more about or exit to exit:'
     input = nil
-    details = BayAreaHikes::Details.details
     while input != 'exit'
-
       input = gets.strip.downcase
-      detail = details[input.to_i - 1]
 
       if input.to_i > 0
-        puts "#{detail.description}"
+        puts "more info"
         call
       elsif input == 'list'
         list_hikes

@@ -2,9 +2,8 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-module BayAreaHikes
-  require '../lib/bay_area_hikes/version'
-  require '../lib/bay_area_hikes/scraper'
-  require '../lib/bay_area_hikes/hike'
-  require '../lib/bay_area_hikes/cli'
-end
+
+require_relative '../lib/bay_area_hikes/version'
+require_relative '../lib/bay_area_hikes/scraper'
+require_relative '../lib/bay_area_hikes/hike'
+require_relative '../lib/bay_area_hikes/cli'

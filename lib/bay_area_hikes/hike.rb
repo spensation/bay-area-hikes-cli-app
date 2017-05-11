@@ -1,6 +1,6 @@
 class BayAreaHikes::Hike
 
-attr_accessor :name, :city, :description
+attr_accessor :name, :length, :description, :url
 
 @@all = []
 
